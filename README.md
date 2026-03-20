@@ -23,13 +23,10 @@ It's actually very simple:
 *   **Sleek looks**: A premium,dark UI. Focus doesn't have to be ugly.
 *   **Multilingual**: Native support for IT, EN, and DE.
 
-## 🛠️ Build & Run
+## 🛠️ Download & Run
 
-If you're a dev and want to try it out:
-1.  Clone the repo.
-2.  Open in **Android Studio**.
-3.  Build the APK.
-4.  **Crucial**: You MUST grant *Usage Access* and *Accessibility* permissions in settings for Pedro to do his job.
+1.  Download and run the APK.
+2.  **Crucial**: You MUST grant *Usage Access* and *Accessibility* permissions in settings for Pedro to do his job.
 
 ---
 *Pedro is here to help, but only if you're serious. If you aren't, don't even bother installing it.*

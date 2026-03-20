@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pedro</string>
+    <string name="title_activity_main">Pedro</string>
+    <string name="accessibility_service_description">Pedro monitora l\'apertura delle app per aiutarti a mantenere il focus.</string>
+    <string name="package_name">com.quizlock.app</string>
+    <string name="custom_url_scheme">com.quizlock.app</string>
+
+    <!-- UI Strings -->
+    <string name="nav_home">HOME</string>
+    <string name="nav_settings">OPZIONI</string>
+    <string name="reality_check">REALITY CHECK</string>
+    <string name="unlocks">SBLOCCHI</string>
+    <string name="social_day">SOCIAL/GG</string>
+    <string name="lost_year">PERSO/ANNO</string>
+    <string name="blocked_apps">APPLICAZIONI BLOCCATE</string>
+    <string name="tap_to_remove">TAP PER RIMUOVERE (10 DOMANDE)</string>
+    <string name="localization">LOCALIZZAZIONE</string>
+    <string name="quiz_language">LINGUA QUIZ</string>
+    <string name="unlock_protocol">PROTOCOLLO DI SBLOCCO</string>
+    <string name="topic">ARGOMENTO</string>
+    <string name="difficulty">LIVELLO DIFFICOLTÀ</string>
+    <string name="window_duration">DURATA FINESTRA</string>
+    <string name="system_accessory">ACCESSORIO DI SISTEMA</string>
+    <string name="accessibility_service">SERVIZIO ACCESSIBILITÀ</string>
+    <string name="connected">COLLEGATO</string>
+    <string name="disconnected">DISATTIVATO</string>
+    <string name="support_project">SUPPORTA IL PROGETTO</string>
+    <string name="donate_desc">QuizLock è uno strumento di privazione per il tuo bene. Se ti serve, offrimi un caffè.</string>
+    <string name="made_with_love">MADE WITH LOVE IN ITALY 🇮🇹</string>
+    <string name="active">ATTIVO</string>
+    <string name="minutes_suffix">MIN</string>
+    <string name="questions_suffix">DOMANDE</string>
+    <string name="days_suffix">GG</string>
+
+    <string-array name="poe_messages">
+        <item>IL TUO TEMPO È PREZIOSO. USALO PER COSTRUIRE I TUOI SOGNI, NON PER SCROLLARE QUELLI DEGLI ALTRI.</item>
+        <item>SCOLLEGATI UN ATTIMO. IL MONDO VERO HA UNA GRAFICA MOLTO PIÙ BELLA.</item>
+        <item>SCEGLI TU COSA FARE DEL TUO TEMPO, NON LASCIARE CHE LO DECIDA UN ALGORITMO.</item>
+        <item>RESPIRA. NON TI PERDI NULLA DI IMPORTANTE SUI SOCIAL. TUTTO CIÒ CHE CONTA È QUI E ORA.</item>
+        <item>OGNI MINUTO NON TRASCORSO QUI È UN\'OPPORTUNITÀ PER IMPARARE, CREARE O SEMPLICEMENTE RIPOSARE.</item>
+    </string-array>
+
+    <string name="access_in">ACCESSO IN: %1$d</string>
+    <string name="usage_stats_title">REALITY CHECK: DATI ASSENTI</string>
+    <string name="usage_stats_desc">Senza accesso ai dati di utilizzo, MindGate non può mostrare quanto tempo stai perdendo. Abilita la visualizzazione ora.</string>
+    <string name="grant_access">ABILITA ACCESSO</string>
+    
+    <string name="resisted">RINUNCE</string>
+    <string name="interstitial_title">Sei Davvero Sicuro?</string>
+    <string name="interstitial_desc">Stai per aprire un social. Sei qui per puro scopo o per scappare dalla noia? \nScegli ora se tornare a vivere o se perdere il tuo tempo sfidando il blocco.</string>
+    <string name="btn_go_home">CHIUDI L\'APP (TORNA A VIVERE)</string>
+    <string name="btn_do_quiz">FAI IL QUIZ (SBLOCCA)</string>
+    
+    <string name="onboarding_title">ATTENZIONE</string>
+    <string name="onboarding_desc">Pedro serve ad aiutarti a combattere la dipendenza digitale. Installarla solo per avere un\'app nel telefono non servirà a nulla se non c\'è un tuo reale impegno. \n\nSii onesto con te stesso. Se non lo fai sul serio, disinstallala adesso.</string>
+    <string name="choose_apps_btn">GESTISCI APP MONITORATE</string>
+    <string name="choose_apps_title">Seleziona App</string>
+    <string name="quiz_removing">RIMOZIONE: </string>
+    <string name="quiz_error">ERRORE</string>
+    <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
+    <string name="quiz_block_kept">BLOCCO MANTENUTO</string>
+</resources>

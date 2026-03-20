@@ -1,0 +1,17 @@
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.gradle/
+build/
+app/build/
+gradle/
+local.properties
+.DS_Store
+*.apk
+*.aab
+captures/
+.externalNativeBuild/
+.cxx/
+*.jks
+*.keystore
+google-services.json

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">HOME</string>
+    <string name="nav_settings">OPTIONS</string>
+    <string name="reality_check">REALITY CHECK</string>
+    <string name="unlocks">UNLOCKS</string>
+    <string name="social_day">SOCIAL/DAY</string>
+    <string name="lost_year">LOST/YEAR</string>
+    <string name="blocked_apps">BLOCKED APPS</string>
+    <string name="tap_to_remove">TAP TO REMOVE (10 Qs)</string>
+    <string name="localization">LOCALIZATION</string>
+    <string name="quiz_language">QUIZ LANGUAGE</string>
+    <string name="unlock_protocol">UNLOCK PROTOCOL</string>
+    <string name="topic">TOPIC</string>
+    <string name="difficulty">DIFFICULTY LEVEL</string>
+    <string name="window_duration">WINDOW DURATION</string>
+    <string name="system_accessory">SYSTEM ACCESSORY</string>
+    <string name="accessibility_service">ACCESSIBILITY SERVICE</string>
+    <string name="connected">CONNECTED</string>
+    <string name="disconnected">DISABLED</string>
+    <string name="support_project">SUPPORT THE PROJECT</string>
+    <string name="donate_desc">MindGate is a tool of deprivation for your own good. If it helps you, buy me a coffee.</string>
+    <string name="made_with_love">MADE WITH LOVE IN ITALY 🇮🇹</string>
+    <string name="active">ACTIVE</string>
+    <string name="minutes_suffix">MIN</string>
+    <string name="questions_suffix">QUESTIONS</string>
+    <string name="days_suffix">DAYS</string>
+
+    <string-array name="poe_messages">
+        <item>YOUR TIME IS PRECIOUS. USE IT TO BUILD YOUR DREAMS, NOT TO SCROLL THROUGH OTHERS\'.</item>
+        <item>DISCONNECT FOR A WHILE. THE REAL WORLD HAS MUCH BETTER GRAPHICS.</item>
+        <item>YOU CHOOSE WHAT TO DO WITH YOUR TIME, DON\'T LET AN ALGORITHM DECIDE.</item>
+        <item>BREATHE. YOU\'RE NOT MISSING ANYTHING IMPORTANT ON SOCIAL MEDIA. EVERYTHING THAT MATTERS IS HERE AND NOW.</item>
+        <item>EVERY MINUTE NOT SPENT HERE IS AN OPPORTUNITY TO LEARN, CREATE, OR SIMPLY REST.</item>
+    </string-array>
+
+    <string name="access_in">ACCESS IN: %1$d</string>
+    <string name="usage_stats_title">REALITY CHECK: NO DATA</string>
+    <string name="usage_stats_desc">Without access to usage data, QuizLock can\'t show you how much time you\'re losing. Enable access now.</string>
+    <string name="grant_access">ENABLE ACCESS</string>
+
+    <string name="resisted">RESISTED</string>
+    <string name="interstitial_title">Are You Truly Sure?</string>
+    <string name="interstitial_desc">You are about to open social media. Are you here for a purpose or to escape boredom? \nChoose now to return to living or waste your time by challenging the block.</string>
+    <string name="btn_go_home">CLOSE APP (RETURN TO LIFE)</string>
+    <string name="btn_do_quiz">DO THE QUIZ (UNLOCK)</string>
+
+    <string name="onboarding_title">ATTENTION</string>
+    <string name="onboarding_desc">Pedro is meant to help you fight digital addiction. Installing it just to have an app on your phone will do nothing without your real commitment. \n\nBe honest with yourself. If you\'re not serious, uninstall it now.</string>
+    <string name="choose_apps_btn">MANAGE TRACKED APPS</string>
+    <string name="choose_apps_title">Select Apps</string>
+    <string name="quiz_removing">REMOVING: </string>
+    <string name="quiz_error">ERROR</string>
+    <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
+    <string name="quiz_block_kept">LOCK REMAINING</string>
+</resources>

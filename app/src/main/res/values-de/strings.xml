@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">HOME</string>
+    <string name="nav_settings">OPTIONEN</string>
+    <string name="reality_check">REALITÄTSCHECK</string>
+    <string name="unlocks">ENTSPERRUNGEN</string>
+    <string name="social_day">SOCIAL/TAG</string>
+    <string name="lost_year">VERLOREN/JAHR</string>
+    <string name="blocked_apps">BLOCKIERTE APPS</string>
+    <string name="tap_to_remove">TAP ZUM ENTFERNEN (10 Fs)</string>
+    <string name="localization">LOKALISIERUNG</string>
+    <string name="quiz_language">QUIZ-SPRACHE</string>
+    <string name="unlock_protocol">ENTSPERRPROTOKOLL</string>
+    <string name="topic">THEMA</string>
+    <string name="difficulty">SCHWIERIGKEITSGRAD</string>
+    <string name="window_duration">FENSTERDAUER</string>
+    <string name="system_accessory">SYSTEMZUBEHÖR</string>
+    <string name="accessibility_service">BARRIEREFREIHEITSDIENST</string>
+    <string name="connected">VERBUNDEN</string>
+    <string name="disconnected">DEAKTIVIERT</string>
+    <string name="support_project">UNTERSTÜTZE DAS PROJEKT</string>
+    <string name="donate_desc">MindGate ist ein Instrument der Entbehrung zu Ihrem Besten. Wenn es Ihnen hilft, spendieren Sie mir einen Kaffee.</string>
+    <string name="made_with_love">MADE WITH LOVE IN ITALY 🇮🇹</string>
+    <string name="active">AKTIV</string>
+    <string name="minutes_suffix">MIN</string>
+    <string name="questions_suffix">FRAGEN</string>
+    <string name="days_suffix">TAGE</string>
+
+    <string-array name="poe_messages">
+        <item>IHRE ZEIT IST KOSTBAR. NUTZEN SIE SIE, UM IHRE TRÄUME ZU VERWIRKLICHEN, NICHT UM ANDERE ANTAUSCHAUEN.</item>
+        <item>TRENNEN SIE SICH FÜR EINE WEILE. DIE REALE WELT HAT EINE VIEL BESSERE GRAFIK.</item>
+        <item>SIE ENTSCHEIDEN, WAS SIE MIT IHRER ZEIT ANFANGEN, LASSEN SIE KEINEN ALGORITHMUS ENTSCHEIDEN.</item>
+        <item>ATMEN SIE. SIE VERPASSEN NICHTS WICHTIGES IN DEN SOZIALEN MEDIEN. ALLES, WAS ZÄHLT, IST HIER UND JETZT.</item>
+        <item>JEDE MINUTE, DIE SIE NICHT HIER VERBRINGEN, IST EINE GELEGENHEIT ZU LERNEN, ZU GESTALTEN ODER EINFACH NUR AUSZURUHEN.</item>
+    </string-array>
+
+    <string name="access_in">ZUGANG IN: %1$d</string>
+    <string name="usage_stats_title">REALITÄTSCHECK: KEINE DATEN</string>
+    <string name="usage_stats_desc">Ohne Zugriff auf Nutzungsdaten kann MindGate Ihnen nicht zeigen, wie viel Zeit Sie verlieren. Aktivieren Sie den Zugriff jetzt.</string>
+    <string name="grant_access">ZUGRIFF ERMÖGLICHEN</string>
+
+    <string name="resisted">VERZICHTET</string>
+    <string name="interstitial_title">Sind Sie Wirklich Sicher?</string>
+    <string name="interstitial_desc">Sie wollen ein soziales Medium öffnen. Sind Sie aus einem Grund hier oder um der Langeweile zu entkommen? \nWählen Sie jetzt, ob Sie zum Leben zurückkehren oder Ihre Zeit verschwenden wollen, indem Sie die Sperre herausfordern.</string>
+    <string name="btn_go_home">APP SCHLIESSEN (ZUM LEBEN ZURÜCKKEHREN)</string>
+    <string name="btn_do_quiz">QUIZ MACHEN (ENTSPERREN)</string>
+
+    <string name="onboarding_title">ACHTUNG</string>
+    <string name="onboarding_desc">Pedro soll Ihnen helfen, die digitale Sucht zu bekämpfen. Die Installation nur um eine App auf Ihrem Handy zu haben, wird ohne Ihre echte Verpflichtung nichts nützen. \n\nSeien Sie ehrlich zu sich selbst. Wenn es Ihnen ernst ist, deinstallieren Sie sie jetzt.</string>
+    <string name="choose_apps_btn">APPS VERWALTEN</string>
+    <string name="choose_apps_title">Apps auswählen</string>
+    <string name="quiz_removing">ENTFERNEN: </string>
+    <string name="quiz_error">FEHLER</string>
+    <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
+    <string name="quiz_block_kept">BLOCK BEIBEHALTEN</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0a0a0a">
+
+    <TextView
+        android:id="@+id/poe_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="32dp"
+        android:fontFamily="monospace"
+        android:gravity="start"
+        android:lineSpacingExtra="8dp"
+        android:text="Disinstallarmi non ti renderà meno dipendente, solo più debole."
+        android:textColor="#e5e5e5"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/poe_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/poe_message"
+        android:layout_alignStart="@id/poe_message"
+        android:layout_marginTop="24dp"
+        android:fontFamily="monospace"
+        android:text="ACCESSO IN: 5"
+        android:textColor="#ff3333"
+        android:textSize="14sp" />
+
+</RelativeLayout>

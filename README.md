@@ -20,7 +20,7 @@ It's actually very simple:
 
 *   **Zero Placeholders**: 500+ unique questions (Language, Logic, Math).
 *   **Deep Integration**: Accessibility Service makes the block real.
-*   **Sleek looks**: A premium, glassmorphic dark UI. Focus doesn't have to be ugly.
+*   **Sleek looks**: A premium,dark UI. Focus doesn't have to be ugly.
 *   **Multilingual**: Native support for IT, EN, and DE.
 
 ## 🛠️ Build & Run

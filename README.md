@@ -2,7 +2,8 @@
 
 ### Because your self-control isn't enough.
 
-[**📲 SCARICA L'APK (Download Direct)**](https://github.com/SandroAlesauro/Pedro/raw/main/releases/Pedro_v1.0_DEBUG.apk)
+[**📲 SCARICA L'APK (Download Direct)**](https://github.com/SandroAlesauro/Pedro/raw/main/releases/Pedro_v1.0.apk)
+
 
 Look, generic app blockers are boring. You either ignore them or you just disable the timer. **Pedro** is different. He doesn't just block your apps; he makes you earn your distractions. It's tough love for your digital addiction.
 

@@ -1,39 +1,34 @@
 # Pedro 🧠🚪
 
-**Stop the scroll. Start the brain.**
+### Because your self-control isn't enough.
 
-Pedro is a premium, focus-oriented Android app designed to help you break free from digital addiction. Unlike traditional app blockers, Pedro doesn't just stop you; it makes you "earn" your distractions through mental challenges.
+Look, generic app blockers are boring. You either ignore them or you just disable the timer. **Pedro** is different. He doesn't just block your apps; he makes you earn your distractions. It's tough love for your digital addiction.
 
-## 🚀 How it works
+## 🕹️ How it works
 
-1.  **Select Your Distractions**: Add apps like Instagram, TikTok, or X to Pedro's monitoring list.
-2.  **Intercept on Opening**: When you try to open a blocked app, Pedro steps in with two options:
-    *   **Close and Return to Life**: Pedro tracks every time you resist the urge.
-    *   **Do the Quiz**: Correctly solve 5 quiz questions to unlock the app for a limited time.
-3.  **The Penalty**: Fail a quiz? Enjoy a 2-minute mandatory cooldown. No exceptions.
-4.  **The Commitment**: To stop monitoring an app, you must pass a 10-question master quiz. Pedro makes sure you're serious.
+It's actually very simple:
+1.  **Stop the urge**: You try to open Instagram/TikTok/X.
+2.  **The Checkpoint**: Pedro intercepts you. You have two choices:
+    *   **Get back to work**: Close the app and go do something productive (Pedro tracks your discipline).
+    *   **The Challenge**: Solve **5 logic or math questions** in a row.
+3.  **Don't mess up**: If you get a question wrong, you're hit with a **2-minute mandatory cooldown**. No excuses.
+4.  **Leaving is harder**: Want to stop monitoring an app? You'll have to pass a **10-question master quiz**. Pedro doesn't let you quit that easily.
 
-## ✨ Features
+## ✨ Why Pedro?
 
-*   **Premium Glassmorphism UI**: Beautiful, dark, and professional interface.
-*   **Diverse Quiz Database**: Over 500+ unique questions in Logic, Math, and General Knowledge.
-*   **Multilingual Support**: Fully localized in English, Italian, and German.
-*   **Personal Touch**: Meet Pedro, your strict but fair companion in digital wellness.
+*   **Zero Placeholders**: 500+ unique questions (Language, Logic, Math).
+*   **Deep Integration**: Accessibility Service makes the block real.
+*   **Sleek looks**: A premium, glassmorphic dark UI. Focus doesn't have to be ugly.
+*   **Multilingual**: Native support for IT, EN, and DE.
 
-## 🛠️ Built With
+## 🛠️ Build & Run
 
-*   Native Android (Java)
-*   Accessibility Services (for app interception)
-*   Usage Stats API
+If you're a dev and want to try it out:
+1.  Clone the repo.
+2.  Open in **Android Studio**.
+3.  Build the APK.
+4.  **Crucial**: You MUST grant *Usage Access* and *Accessibility* permissions in settings for Pedro to do his job.
 
-## 📲 How to Build
+---
+*Pedro is here to help, but only if you're serious. If you aren't, don't even bother installing it.*
 
-1.  Clone this repository.
-2.  Open the project in **Android Studio**.
-3.  Ensure you have the latest Android SDK and Gradle installed.
-4.  Build the APK or run directly on your device.
-5.  **Important**: Grant *Usage Access* and *Accessibility Service* permissions for the app to function.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

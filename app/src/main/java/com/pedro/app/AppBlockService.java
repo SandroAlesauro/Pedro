@@ -1,4 +1,4 @@
-package com.quizlock.app;
+package com.pedro.app;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.Intent;

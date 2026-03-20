@@ -1,4 +1,4 @@
-package com.quizlock.app;
+package com.pedro.app;
 
 import android.content.Context;
 import android.content.res.Configuration;

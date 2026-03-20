@@ -1,4 +1,4 @@
-package com.quizlock.app;
+package com.pedro.app;
 
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;

@@ -1,4 +1,4 @@
-package com.quizlock.app;
+package com.pedro.app;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.quizlock.app;
+package com.pedro.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

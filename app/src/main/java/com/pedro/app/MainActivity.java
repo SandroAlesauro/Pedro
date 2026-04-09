@@ -1,11 +1,13 @@
 package com.pedro.app;
 
+import android.app.AppOpsManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Process;
 import android.provider.Settings;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +24,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -51,9 +55,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("isShowingSettings", isShowingSettings);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        if (savedInstanceState != null) {
+            isShowingSettings = savedInstanceState.getBoolean("isShowingSettings", false);
+        }
 
         pm = new PrefsManager(this);
         contentFrame = findViewById(R.id.content_frame);
@@ -64,31 +78,52 @@ public class MainActivity extends AppCompatActivity {
         navSettings.setOnClickListener(v -> showSettings());
 
         if (pm.isFirstLaunch()) {
-            new android.app.AlertDialog.Builder(this)
+            new AlertDialog.Builder(this)
                 .setTitle(R.string.onboarding_title)
                 .setMessage(R.string.onboarding_desc)
                 .setCancelable(false)
-                .setPositiveButton("HO CAPITO", (d, w) -> {
+                .setPositiveButton(R.string.btn_ok, (d, w) -> {
                     pm.setFirstLaunchDone();
                     showHome();
                     checkPermissions();
                 })
                 .show();
         } else {
-            showHome();
+            if (isShowingSettings) showSettings();
+            else showHome();
             checkPermissions();
         }
     }
 
     private void checkPermissions() {
-        checkUsageStatsPermission();
-        if (!isAccessibilityEnabled()) {
-            new android.app.AlertDialog.Builder(this)
-                .setTitle("Concedi Accessibilità")
-                .setMessage("Abilita il Servizio di Accessibilità di QuizLock per permettere il blocco delle app.")
-                .setPositiveButton("VAI ALLE IMPOSTAZIONI", (d, w) -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)))
+        if (!hasUsageStatsPermission()) {
+            new AlertDialog.Builder(this)
+                .setTitle(R.string.usage_stats_title)
+                .setMessage(R.string.usage_stats_desc)
+                .setCancelable(false)
+                .setPositiveButton(R.string.grant_access, (d, w) -> {
+                    try {
+                        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Fallo manualmente.", Toast.LENGTH_LONG).show();
+                    }
+                })
                 .show();
         }
+        
+        if (!isAccessibilityEnabled()) {
+            new AlertDialog.Builder(this)
+                .setTitle(R.string.perm_acc_title)
+                .setMessage(R.string.perm_acc_desc)
+                .setPositiveButton(R.string.btn_settings, (d, w) -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)))
+                .show();
+        }
+    }
+
+    private boolean hasUsageStatsPermission() {
+        AppOpsManager appOps = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
+        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, Process.myUid(), getPackageName());
+        return mode == AppOpsManager.MODE_ALLOWED;
     }
 
     @Override
@@ -138,21 +173,41 @@ public class MainActivity extends AppCompatActivity {
         TextView kpiUsage = v.findViewById(R.id.kpi_usage);
         TextView kpiProj = v.findViewById(R.id.kpi_projection);
 
-        if (kpiUnlocks != null) kpiUnlocks.setText(String.valueOf(pm.getUnlocksToday()));
-        if (kpiResisted != null) kpiResisted.setText(String.valueOf(pm.getResistedToday()));
+        if (kpiUnlocks != null) {
+            kpiUnlocks.setText(String.valueOf(pm.getUnlocksToday()));
+            ((View)kpiUnlocks.getParent()).setOnClickListener(view -> 
+                showInfoDialog(getString(R.string.unlocks), getString(R.string.desc_unlocks)));
+        }
+        if (kpiResisted != null) {
+            kpiResisted.setText(String.valueOf(pm.getResistedToday()));
+            ((View)kpiResisted.getParent()).setOnClickListener(view -> 
+                showInfoDialog(getString(R.string.resisted), getString(R.string.desc_resisted)));
+        }
         
-        long todayMs = getSocialTimeForDays(0);
-        if (kpiUsage != null) kpiUsage.setText(formatMillis(todayMs));
+        long todayMs = getSocialTimeSum(0);
+        if (kpiUsage != null) {
+            kpiUsage.setText(formatMillis(todayMs));
+            ((View)kpiUsage.getParent()).setOnClickListener(view -> 
+                showInfoDialog(getString(R.string.social_day), getString(R.string.desc_usage)));
+        }
         
-        // REALE: Somma totale degli ultimi 365 giorni interrogata direttamente al sistema!
         if (kpiProj != null) {
-            long annualMs = getSocialTimeForDays(365);
+            // User requested a real sum instead of a projection
+            long annualMs = getSocialTimeSum(365);
+            
             if (annualMs > 0) {
                 long daysLost = annualMs / (1000L * 60 * 60 * 24);
-                kpiProj.setText(daysLost + " " + getString(R.string.days_suffix));
+                if (daysLost > 0) {
+                    kpiProj.setText(daysLost + " " + getString(R.string.days_suffix));
+                } else {
+                    long hoursLost = annualMs / (1000L * 60 * 60);
+                    kpiProj.setText(hoursLost + "h");
+                }
             } else {
-                kpiProj.setText("--");
+                kpiProj.setText("0 " + getString(R.string.days_suffix));
             }
+            ((View)kpiProj.getParent()).setOnClickListener(view -> 
+                showInfoDialog(getString(R.string.lost_year), getString(R.string.desc_usage_annual)));
         }
 
         LinearLayout appList = v.findViewById(R.id.app_list_home);
@@ -182,24 +237,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void showInfoDialog(String title, String message) {
+        new AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton(R.string.btn_ok, null)
+            .show();
+    }
+
     private void refreshSettings() {
         if (contentFrame.getChildCount() > 0) refreshSettings(contentFrame.getChildAt(0));
     }
 
     private void refreshSettings(View v) {
-        // Messaggio brutale
         TextView brutalMsg = v.findViewById(R.id.brutal_message);
         if (brutalMsg != null) {
             String[] messages = getResources().getStringArray(R.array.poe_messages);
-            brutalMsg.setText(messages[new Random().nextInt(messages.length)]);
+            if (messages.length > 0) {
+                brutalMsg.setText(messages[new Random().nextInt(messages.length)]);
+            }
         }
 
-        // Lingua
         TextView valLang = v.findViewById(R.id.val_language);
         if (valLang != null) {
             String lang = pm.getLanguage();
             if (lang.equals("it")) valLang.setText("ITALIANO");
             else if (lang.equals("en")) valLang.setText("ENGLISH");
+            else if (lang.equals("es")) valLang.setText("ESPAÑOL");
             else if (lang.equals("de")) valLang.setText("DEUTSCH");
         }
 
@@ -207,81 +271,70 @@ public class MainActivity extends AppCompatActivity {
         if (btnLang != null) {
             btnLang.setOnClickListener(view -> {
                 String l = pm.getLanguage();
-                String next = l.equals("it") ? "en" : l.equals("en") ? "de" : "it";
+                String next = l.equals("it") ? "en" : l.equals("en") ? "es" : l.equals("es") ? "de" : "it";
                 pm.setLanguage(next);
                 recreate();
             });
         }
 
-        // App Manage Selection
         View btnManageApps = v.findViewById(R.id.btn_manage_apps);
         if (btnManageApps != null) {
             btnManageApps.setOnClickListener(view -> {
                 String[] items = new String[QuizData.APPS.length];
                 boolean[] checkedItems = new boolean[QuizData.APPS.length];
-                java.util.Set<String> tracked = pm.getTrackedIds();
+                Set<String> blockedIds = pm.getBlockedIds();
                 for (int i = 0; i < QuizData.APPS.length; i++) {
                     items[i] = QuizData.APPS[i][1];
-                    checkedItems[i] = tracked.contains(QuizData.APPS[i][0]);
+                    checkedItems[i] = blockedIds.contains(QuizData.APPS[i][0]);
                 }
-                new android.app.AlertDialog.Builder(this)
+                new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.choose_apps_title))
                     .setMultiChoiceItems(items, checkedItems, (dialog, which, isChecked) -> {
                         checkedItems[which] = isChecked;
                     })
                     .setPositiveButton("SALVA", (dialog, which) -> {
-                        java.util.Set<String> newTracked = new java.util.HashSet<>();
+                        Set<String> newBlocked = new java.util.HashSet<>();
                         for (int i = 0; i < QuizData.APPS.length; i++) {
                             if (checkedItems[i]) {
-                                newTracked.add(QuizData.APPS[i][0]);
-                            } else {
-                                // Rimuovi dai bloccati se non è più tra quelle tracciate
-                                pm.removeBlockedId(QuizData.APPS[i][0]);
+                                newBlocked.add(QuizData.APPS[i][0]);
                             }
                         }
-                        pm.setTrackedIds(newTracked);
+                        pm.setBlockedIds(newBlocked);
                         refreshSettings(v);
                     })
                     .show();
             });
         }
 
-        // App List
         LinearLayout appList = v.findViewById(R.id.app_list_settings);
         if (appList != null) {
             appList.removeAllViews();
-            java.util.Set<String> blockedIds = pm.getBlockedIds();
-            java.util.Set<String> trackedIds = pm.getTrackedIds();
+            Set<String> blockedIds = pm.getBlockedIds();
             for (String[] app : QuizData.APPS) {
                 String id = app[0];
-                if (!trackedIds.contains(id)) continue;
+                if (!blockedIds.contains(id)) continue;
                 
-                boolean isBlocked = blockedIds.contains(id);
                 LinearLayout row = createRow();
                 TextView tv = new TextView(this);
                 tv.setText(app[1]);
                 tv.setTextColor(getColor(R.color.text_primary));
                 row.addView(tv, new LinearLayout.LayoutParams(0, -2, 1));
+                
                 View cb = new View(this);
                 cb.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(20), dpToPx(20)));
-                cb.setBackgroundColor(isBlocked ? getColor(R.color.accent_cyan) : getColor(R.color.bg_card_light));
+                cb.setBackgroundColor(getColor(R.color.accent_cyan));
                 row.addView(cb);
+                
                 row.setOnClickListener(view -> {
-                    if (isBlocked) {
-                        Intent intent = new Intent(this, QuizActivity.class);
-                        intent.putExtra("INTERCEPTED_PACKAGE", id);
-                        intent.putExtra("SETTINGS_UNLOCK", true);
-                        resultLauncher.launch(intent);
-                    } else {
-                        pm.addBlockedId(id);
-                        refreshSettings(v);
-                    }
+                    Intent intent = new Intent(this, QuizActivity.class);
+                    intent.putExtra("INTERCEPTED_PACKAGE", id);
+                    intent.putExtra("SETTINGS_UNLOCK", true);
+                    resultLauncher.launch(intent);
                 });
                 appList.addView(row);
             }
         }
 
-        // Configurazione
         TextView valTopic = v.findViewById(R.id.val_topic);
         TextView valDiff = v.findViewById(R.id.val_diff);
         TextView valDur = v.findViewById(R.id.val_duration);
@@ -313,8 +366,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         v.findViewById(R.id.btn_donate).setOnClickListener(view -> 
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ferralessandro11@gmail.com&currency_code=EUR&item_name=Donazione%20QuizLock")))
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ferralessandro11@gmail.com&currency_code=EUR&item_name=Donazione%20Pedro")))
         );
+        View btnInstagram = v.findViewById(R.id.btn_instagram);
+        if (btnInstagram != null) {
+            btnInstagram.setOnClickListener(view -> {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/_u/alessandroferrari"));
+                    intent.setPackage("com.instagram.android");
+                    startActivity(intent);
+                } catch (Exception e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/alessandroferrari")));
+                }
+            });
+        }
         v.findViewById(R.id.btn_accessibility).setOnClickListener(view -> 
             startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
         );
@@ -329,37 +394,46 @@ public class MainActivity extends AppCompatActivity {
         tvStatus.setTextColor(enabled ? getColor(R.color.accent_green) : getColor(R.color.accent_red));
     }
 
-    private long getSocialTimeForDays(int days) {
+    private long getSocialTimeSum(int days) {
         UsageStatsManager usm = (UsageStatsManager) getSystemService(Context.USAGE_STATS_SERVICE);
         if (usm == null) return 0;
 
-        Calendar calendar = Calendar.getInstance();
         long end = System.currentTimeMillis();
+        long installTime = 0;
+        try {
+            installTime = getPackageManager().getPackageInfo(getPackageName(), 0).firstInstallTime;
+        } catch (Exception ignored) {}
+
+        Calendar calendar = Calendar.getInstance();
+        long start;
         
         if (days == 0) {
-            // Solo oggi (dalla mezzanotte)
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
+            start = Math.max(calendar.getTimeInMillis(), installTime);
         } else {
-            // Ultimi X giorni
             calendar.add(Calendar.DAY_OF_YEAR, -days);
+            start = Math.max(calendar.getTimeInMillis(), installTime);
         }
         
-        long start = calendar.getTimeInMillis();
-        
-        // Uso queryAndAggregate per ottenere i totali del periodo
-        Map<String, UsageStats> stats = usm.queryAndAggregateUsageStats(start, end);
         long total = 0;
         
-        // Verifichiamo TUTTE le app in QuizData.APPS per dati REALI
-        for (String[] app : QuizData.APPS) {
-            UsageStats s = stats.get(app[3]);
-            if (s != null) {
-                total += s.getTotalTimeInForeground();
+        // Per calcolare il tempo speso in modo infallibile ed accertarci di star analizzando ESCLUSIVAMENTE 
+        // le app contrassegnate come in "stato di blocco", analizziamo tutti i counter scartando a priori ogni
+        // applicazione che non figura nel set di isPackageBlocked.
+        Map<String, UsageStats> aggregated = usm.queryAndAggregateUsageStats(start, end);
+        if (aggregated != null) {
+            for (Map.Entry<String, UsageStats> entry : aggregated.entrySet()) {
+                String pkg = entry.getKey().toLowerCase().trim();
+                // Verifichiamo strettamente che l'app sia segnata come attualmente bloccata
+                if (pm.isPackageBlocked(pkg)) {
+                    total += entry.getValue().getTotalTimeInForeground();
+                }
             }
         }
+        
         return total;
     }
 
@@ -371,27 +445,6 @@ public class MainActivity extends AppCompatActivity {
         
         if (hours > 0) return hours + "h " + minutes + "m";
         return minutes + "m " + seconds + "s";
-    }
-
-    private void checkUsageStatsPermission() {
-        UsageStatsManager usm = (UsageStatsManager) getSystemService(Context.USAGE_STATS_SERVICE);
-        long now = System.currentTimeMillis();
-        // Controllo se abbiamo dati reali disponibili
-        List<UsageStats> ls = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, now - 1000 * 60 * 60, now);
-        if (ls == null || ls.isEmpty()) {
-            new AlertDialog.Builder(this)
-                .setTitle(R.string.usage_stats_title)
-                .setMessage(R.string.usage_stats_desc)
-                .setCancelable(false)
-                .setPositiveButton(R.string.grant_access, (d, w) -> {
-                    try {
-                        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
-                    } catch (Exception e) {
-                        Toast.makeText(this, "Fallo manualmente.", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .show();
-        }
     }
 
     private boolean isAccessibilityEnabled() {

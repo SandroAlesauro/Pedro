@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class QuizData {
 
@@ -25,6 +26,10 @@ public class QuizData {
         // --- ITALIANO ---
         Map<String, Map<String, List<Question>>> itMap = new HashMap<>();
         ENGINE.put("it", itMap);
+        
+        // --- SPANISH ---
+        Map<String, Map<String, List<Question>>> esMap = new HashMap<>();
+        ENGINE.put("es", esMap);
         
         // Logica IT
         Map<String, List<Question>> itLogic = new HashMap<>();
@@ -389,9 +394,65 @@ public class QuizData {
         deKnowDiff.add(new Question("Wer erfand das Telefon?", new String[]{"Bell", "Meucci", "Edison", "Tesla"}, 1));
         deKnowDiff.add(new Question("Hundertjähriger Krieg, wer gewann?", new String[]{"England", "Frankreich", "Spanien", "Italien"}, 1));
         deKnow.put("difficile", deKnowDiff);
+
+        // --- SPANISH (LOGIC & KNOWLEDGE) ---
+        Map<String, List<Question>> esLogic = new HashMap<>();
+        esMap.put("logic", esLogic);
+        List<Question> esLogicMedio = new ArrayList<>();
+        esLogicMedio.add(new Question("¿Qué número viene después de 14?", new String[]{"13", "15", "16", "12"}, 1));
+        esLogicMedio.add(new Question("Un granjero tiene 17 ovejas. Todas excepto 9 escapan. ¿Cuántas quedan?", new String[]{"8", "9", "17", "0"}, 1));
+        esLogicMedio.add(new Question("En una carrera superas al segundo. ¿En qué lugar estás?", new String[]{"Primero", "Segundo", "Tercero", "Último"}, 1));
+        esLogicMedio.add(new Question("¿Qué se rompe al decir su nombre?", new String[]{"Silencio", "Cristal", "Promesa", "Corazón"}, 0));
+        esLogicMedio.add(new Question("Si 5 máquinas hacen 5 tornillos en 5 minutos, ¿cuántas para 100 en 100 minutos?", new String[]{"100", "50", "20", "5"}, 3));
+        esLogicMedio.add(new Question("¿Cuál sigue: 2, 4, 8, 16, ...?", new String[]{"20", "24", "32", "64"}, 2));
+        esLogicMedio.add(new Question("Cuanto más lo usas, más pequeño se vuelve. ¿Qué es?", new String[]{"Jabón", "Vela", "Lápiz", "Borrador"}, 0));
+        esLogicMedio.add(new Question("¿Qué mes tiene 28 días?", new String[]{"Febrero", "Todos", "Agosto", "Abril"}, 1));
+        esLogicMedio.add(new Question("El abuelo de tu primo es tu...", new String[]{"Tío", "Abuelo", "Padre", "Hermano"}, 1));
+        esLogicMedio.add(new Question("¿Qué tiene muchas llaves pero ninguna cerradura?", new String[]{"Caja", "Piano", "Diario", "Puerta"}, 1));
+        esLogic.put("medio", esLogicMedio);
+
+        List<Question> esLogicDiff = new ArrayList<>();
+        esLogicDiff.add(new Question("El padre de Mario tiene 5 hijos: Pa, Pe, Pi, Po. ¿Quién es el quinto?", new String[]{"Pu", "Mario", "Pippo", "Palo"}, 1));
+        esLogicDiff.add(new Question("Un ladrillo pesa 1kg más medio ladrillo. ¿Cuánto pesa?", new String[]{"1.5kg", "2kg", "3kg", "1kg"}, 1));
+        esLogicDiff.add(new Question("¿Cuántas veces puedes restar 5 a 25?", new String[]{"5", "4", "1", "Infinitas"}, 2));
+        esLogicDiff.add(new Question("Si un tren va al sur, ¿hacia dónde va el humo?", new String[]{"Sur", "Norte", "Ningún lado", "Arriba"}, 2));
+        esLogicDiff.add(new Question("¿Qué tiene ciudades sin casas y agua sin peces?", new String[]{"Globo", "Atlas", "Mapa", "Planeta"}, 2));
+        esLogicDiff.add(new Question("Entre más hay, menos ves. ¿Qué es?", new String[]{"Niebla", "Oscuridad", "Luz", "Humo"}, 1));
+        esLogicDiff.add(new Question("Si me rompes, sigo funcionando. ¿Qué soy?", new String[]{"Secreto", "Silencio", "Noticia", "Corazón"}, 3));
+        esLogicDiff.add(new Question("Tienes 3 manzanas y tomas 2. ¿Cuántas tienes?", new String[]{"1", "2", "3", "0"}, 1));
+        esLogic.put("difficile", esLogicDiff);
+
+        Map<String, List<Question>> esKnow = new HashMap<>();
+        esMap.put("knowledge", esKnow);
+        List<Question> esKnowMedio = new ArrayList<>();
+        esKnowMedio.add(new Question("¿Quién escribió La Divina Comedia?", new String[]{"Petrarca", "Boccaccio", "Dante", "Leopardi"}, 2));
+        esKnowMedio.add(new Question("¿Capital de Japón?", new String[]{"Osaka", "Tokio", "Kioto", "Seúl"}, 1));
+        esKnowMedio.add(new Question("¿Cuál es el planeta más cercano al Sol?", new String[]{"Venus", "Marte", "Mercurio", "Tierra"}, 2));
+        esKnowMedio.add(new Question("¿Qué gas es más abundante en el aire?", new String[]{"Oxígeno", "Hidrógeno", "Nitrógeno", "Carbono"}, 2));
+        esKnowMedio.add(new Question("¿Capital de Australia?", new String[]{"Sídney", "Melbourne", "Canberra", "Perth"}, 2));
+        esKnowMedio.add(new Question("¿Quién descubrió la penicilina?", new String[]{"Fleming", "Pasteur", "Curie", "Einstein"}, 0));
+        esKnowMedio.add(new Question("¿Capital de Alemania?", new String[]{"Múnich", "Berlín", "Fráncfort", "Hamburgo"}, 1));
+        esKnowMedio.add(new Question("¿Símbolo químico del Hierro?", new String[]{"Fl", "Fe", "P", "Fm"}, 1));
+        esKnowMedio.add(new Question("¿Río más largo de Italia?", new String[]{"Tíber", "Arno", "Po", "Adigio"}, 2));
+        esKnow.put("medio", esKnowMedio);
+
+        List<Question> esKnowDiff = new ArrayList<>();
+        esKnowDiff.add(new Question("¿Año del descubrimiento de América?", new String[]{"1490", "1492", "1494", "1498"}, 1));
+        esKnowDiff.add(new Question("¿País más pequeño del mundo?", new String[]{"Mónaco", "San Marino", "Vaticano", "Liechtenstein"}, 2));
+        esKnowDiff.add(new Question("¿Inventor de la pila?", new String[]{"Galvani", "Volta", "Fermi", "Meucci"}, 1));
+        esKnowDiff.add(new Question("¿Idioma más hablado en el mundo?", new String[]{"Inglés", "Chino", "Español", "Árabe"}, 1));
+        esKnowDiff.add(new Question("¿Capital de Brasil?", new String[]{"Río", "San Pablo", "Brasilia", "Salvador"}, 2));
+        esKnowDiff.add(new Question("¿Primer hombre en la Luna?", new String[]{"Gagarin", "Armstrong", "Aldrin", "Collins"}, 1));
+        esKnowDiff.add(new Question("¿Metal más precioso?", new String[]{"Oro", "Platino", "Rodio", "Plata"}, 2));
+        esKnowDiff.add(new Question("¿Capital de Suecia?", new String[]{"Oslo", "Estocolmo", "Copenhague", "Helsinki"}, 1));
+        esKnow.put("difficile", esKnowDiff);
     }
 
     public static List<Question> getQuestions(String lang, String topic, String diff) {
+        if ("math".equals(topic)) {
+            return generateDynamicMath(diff, 10);
+        }
+        
         Map<String, Map<String, List<Question>>> langMap = ENGINE.get(lang);
         if (langMap == null) langMap = ENGINE.get("en");
         Map<String, List<Question>> topicMap = langMap.get(topic);
@@ -399,6 +460,75 @@ public class QuizData {
         List<Question> qs = topicMap.get(diff);
         if (qs == null) qs = topicMap.get("medio");
         return qs;
+    }
+
+    private static List<Question> generateDynamicMath(String diff, int count) {
+        List<Question> list = new ArrayList<>();
+        Random r = new Random();
+        boolean isHard = "difficile".equals(diff);
+        
+        for (int i = 0; i < count; i++) {
+            int type = r.nextInt(isHard ? 5 : 3);
+            String q = "";
+            int ans = 0;
+            
+            switch (type) {
+                case 0: // Addizione/Sottrazione complicata
+                    int a = r.nextInt(isHard ? 200 : 100);
+                    int b = r.nextInt(isHard ? 200 : 100);
+                    if (r.nextBoolean()) { q = a + " + " + b; ans = a + b; }
+                    else { q = a + " - " + b; ans = a - b; }
+                    break;
+                case 1: // Moltiplicazione
+                    int m1 = r.nextInt(isHard ? 20 : 12) + 2;
+                    int m2 = r.nextInt(isHard ? 15 : 10) + 2;
+                    q = m1 + " x " + m2;
+                    ans = m1 * m2;
+                    break;
+                case 2: // Parentesi (tricky)
+                    int p1 = r.nextInt(10) + 2;
+                    int p2 = r.nextInt(10) + 2;
+                    int p3 = r.nextInt(10) + 2;
+                    q = "(" + p1 + " x " + p2 + ") + " + p3;
+                    ans = (p1 * p2) + p3;
+                    break;
+                case 3: // Radici quadrate (solo hard)
+                    int[] roots = {4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225};
+                    int base = roots[r.nextInt(roots.length)];
+                    int rootVal = (int) Math.sqrt(base);
+                    int offset = r.nextInt(20);
+                    q = "√(" + base + ") + " + offset;
+                    ans = rootVal + offset;
+                    break;
+                case 4: // Divisioni con resto 0 (solo hard)
+                    int d2 = r.nextInt(12) + 2;
+                    int d1 = d2 * (r.nextInt(15) + 2);
+                    q = d1 + " / " + d2;
+                    ans = d1 / d2;
+                    break;
+                default:
+                    q = "10 + 10"; ans = 20;
+            }
+            
+            String[] opts = new String[4];
+            int correctPos = r.nextInt(4);
+            opts[correctPos] = String.valueOf(ans);
+            
+            List<Integer> used = new ArrayList<>();
+            used.add(ans);
+            for (int k = 0; k < 4; k++) {
+                if (k == correctPos) continue;
+                int wrong;
+                do {
+                    wrong = ans + (r.nextInt(20) - 10);
+                    if (wrong == ans) wrong += (r.nextBoolean() ? 1 : -1);
+                } while (used.contains(wrong));
+                opts[k] = String.valueOf(wrong);
+                used.add(wrong);
+            }
+            list.add(new Question(q + " = ?", opts, correctPos));
+        }
+        return list;
     }
 
     public static List<Question> getUnlockQuiz(String lang) {
@@ -427,12 +557,20 @@ public class QuizData {
             qs.add(new Question("Wie viele Seiten hat ein Sechseck?", new String[]{"5", "6", "7", "8"}, 1));
             qs.add(new Question("Was ist der rote Planet?", new String[]{"Mars", "Venus", "Jupiter", "Saturn"}, 0));
             qs.add(new Question("Größtes Tier der Welt?", new String[]{"Elefant", "Blauwal", "Giraffe", "Hai"}, 1));
-            qs.add(new Question("Hauptstadt von Spanien?", new String[]{"Barcelona", "Madrid", "Sevilla", "Valencia"}, 1));
-            qs.add(new Question("Wie viele Planeten hat unser Sonnensystem?", new String[]{"7", "8", "9", "10"}, 1));
-            qs.add(new Question("Wer malte die Mona Lisa?", new String[]{"Michelangelo", "Raffaello", "Leonardo", "Donatello"}, 2));
-            qs.add(new Question("Woraus besteht Wasser?", new String[]{"H2O", "CO2", "O2", "NaCl"}, 0));
-            qs.add(new Question("Hauptstadt von Italien?", new String[]{"Mailand", "Venedig", "Rom", "Neapel"}, 2));
-            qs.add(new Question("Wie viele Zähne hat ein Erwachsener?", new String[]{"28", "30", "32", "34"}, 2));
+
+
+
+        } else if ("es".equals(lang)) {
+            qs.add(new Question("¿Capital de Francia?", new String[]{"Londres", "Berlín", "París", "Madrid"}, 2));
+            qs.add(new Question("¿Cuántos lados tiene un hexágono?", new String[]{"5", "6", "7", "8"}, 1));
+            qs.add(new Question("¿Cuál es el planeta rojo?", new String[]{"Marte", "Venus", "Júpiter", "Saturno"}, 0));
+            qs.add(new Question("¿Animal más grande del mundo?", new String[]{"Elefante", "Ballena Azul", "Jirafa", "Tiburón"}, 1));
+            qs.add(new Question("¿Capital de España?", new String[]{"Barcelona", "Madrid", "Sevilla", "Valencia"}, 1));
+            qs.add(new Question("¿Cuántos planetas hay en el sistema solar?", new String[]{"7", "8", "9", "10"}, 1));
+            qs.add(new Question("¿Quién pintó la Mona Lisa?", new String[]{"Miguel Ángel", "Rafael", "Leonardo", "Donatello"}, 2));
+            qs.add(new Question("¿De qué está hecha el agua?", new String[]{"H2O", "CO2", "O2", "NaCl"}, 0));
+            qs.add(new Question("¿Capital de Italia?", new String[]{"Milán", "Venecia", "Roma", "Nápoles"}, 2));
+            qs.add(new Question("¿Cuántos dientes tiene un adulto?", new String[]{"28", "30", "32", "34"}, 2));
         } else {
             qs.add(new Question("Capital of France?", new String[]{"London", "Berlin", "Paris", "Madrid"}, 2));
             qs.add(new Question("How many sides does a hexagon have?", new String[]{"5", "6", "7", "8"}, 1));
@@ -460,6 +598,13 @@ public class QuizData {
         {"li", "LINKEDIN", "linkedin.com", "com.linkedin.android"},
         {"pt", "PINTEREST", "pinterest.com", "com.pinterest"},
         {"tw", "TWITCH", "twitch.tv", "tv.twitch.android.app"},
+        {"wa", "WHATSAPP", "whatsapp.com", "com.whatsapp"},
+        {"tg", "TELEGRAM", "telegram.org", "org.telegram.messenger"},
+        {"nf", "NETFLIX", "netflix.com", "com.netflix.mediaclient"},
+        {"dv", "DISNEY+", "disneyplus.com", "com.disney.disneyplus"},
+        {"pv", "PRIME VIDEO", "primevideo.com", "com.amazon.avod.thirdpartyclient"},
+        {"dc", "DISCORD", "discord.com", "com.discord"},
+        {"az", "AMAZON", "amazon.com", "com.amazon.mShop.android.shopping"},
     };
 
     public static String[] TOPICS = {"logic", "math", "knowledge"};
@@ -471,7 +616,10 @@ public class QuizData {
     }
 
     public static String packageToId(String pkg) {
-        for (String[] app : APPS) if (pkg.contains(app[3]) || app[3].contains(pkg)) return app[0];
+        for (String[] app : APPS) {
+            // Un package reale dovrebbe avere un nome definito, evito di matchare generici come "com"
+            if (pkg.contains(app[3])) return app[0]; 
+        }
         return null;
     }
 }

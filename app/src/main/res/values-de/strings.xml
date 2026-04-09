@@ -41,7 +41,7 @@
 
     <string name="resisted">VERZICHTET</string>
     <string name="interstitial_title">Sind Sie Wirklich Sicher?</string>
-    <string name="interstitial_desc">Sie wollen ein soziales Medium öffnen. Sind Sie aus einem Grund hier oder um der Langeweile zu entkommen? \nWählen Sie jetzt, ob Sie zum Leben zurückkehren oder Ihre Zeit verschwenden wollen, indem Sie die Sperre herausfordern.</string>
+    <string name="interstitial_desc">Sie wollen ein soziales Medium öffnen. Sind Sie aus einem Grund hier o um der Langeweile zu entkommen? \nWählen Sie jetzt, ob Sie zum Leben zurückkehren oder Ihre Zeit verschwenden wollen, indem Sie die Sperre herausfordern.</string>
     <string name="btn_go_home">APP SCHLIESSEN (ZUM LEBEN ZURÜCKKEHREN)</string>
     <string name="btn_do_quiz">QUIZ MACHEN (ENTSPERREN)</string>
 
@@ -53,4 +53,13 @@
     <string name="quiz_error">FEHLER</string>
     <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
     <string name="quiz_block_kept">BLOCK BEIBEHALTEN</string>
+
+    <!-- Dash Descriptions -->
+    <string name="desc_unlocks">Anzahl der Male, die Sie heute nachgegeben und eine soziale App geöffnet haben.</string>
+    <string name="desc_resisted">Anzahl der Male, die Sie sich nach dem Realitätscheck gegen das Öffnen der App entschieden haben.</string>
+    <string name="desc_usage">Gesamtzeit, die HEUTE in den von dir blockierten Apps verbracht wurde.</string>
+    <string name="desc_usage_annual">Gesamtzeit, die seit der Installation von Pedro in den blockierten sozialen Medien verloren ging.</string>
+
+    <string name="feedback_title">FEEDBACK UND IDEEN</string>
+    <string name="feedback_desc">Hast du Ideen für Pedro oder möchtest du dich bedanken? Schreib mir auf Instagram!</string>
 </resources>

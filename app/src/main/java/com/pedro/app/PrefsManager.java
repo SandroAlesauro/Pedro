@@ -20,40 +20,7 @@ public class PrefsManager {
         this.prefs = context.getApplicationContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     }
 
-    // ---- BLOCKED PACKAGES ----
-
-    public Set<String> getBlockedPackages() {
-        return new HashSet<>(prefs.getStringSet("blocked_packages", new HashSet<>()));
-    }
-
-    public void setBlockedPackages(Set<String> packages) {
-        prefs.edit().putStringSet("blocked_packages", packages).apply();
-    }
-
-    public boolean isPackageBlocked(String pkg) {
-        if (pkg == null) return false;
-        Set<String> blocked = getBlockedPackages();
-        // Controllo esatto e parziale per sicurezza
-        if (blocked.contains(pkg)) return true;
-        for (String b : blocked) {
-            if (pkg.contains(b) || b.contains(pkg)) return true;
-        }
-        return false;
-    }
-
-    public void addBlockedPackage(String pkg) {
-        Set<String> set = getBlockedPackages();
-        set.add(pkg);
-        setBlockedPackages(set);
-    }
-
-    public void removeBlockedPackage(String pkg) {
-        Set<String> set = getBlockedPackages();
-        set.remove(pkg);
-        setBlockedPackages(set);
-    }
-
-    // ---- BLOCKED APP IDS (per la UI) ----
+    // ---- BLOCKED PACKAGES & IDS ----
 
     public Set<String> getBlockedIds() {
         return new HashSet<>(prefs.getStringSet("blocked_ids", new HashSet<>()));
@@ -61,17 +28,6 @@ public class PrefsManager {
 
     public void setBlockedIds(Set<String> ids) {
         prefs.edit().putStringSet("blocked_ids", ids).apply();
-        // Sincronizza anche i package name
-        Set<String> packages = new HashSet<>();
-        for (String id : ids) {
-            String pkg = QuizData.idToPackage(id);
-            if (pkg != null) packages.add(pkg);
-        }
-        setBlockedPackages(packages);
-    }
-
-    public boolean isIdBlocked(String id) {
-        return getBlockedIds().contains(id);
     }
 
     public void addBlockedId(String id) {
@@ -85,17 +41,44 @@ public class PrefsManager {
         ids.remove(id);
         setBlockedIds(ids);
     }
-    
+
+    public boolean isPackageBlocked(String pkg) {
+        if (pkg == null) return false;
+        
+        // Prima controlliamo se il package è mappato a un ID conosciuto
+        String id = QuizData.packageToId(pkg);
+        if (id != null) {
+            return getBlockedIds().contains(id);
+        }
+        
+        // Fallback: controllo se il package è presente in un set di package personalizzati
+        Set<String> customBlocked = prefs.getStringSet("blocked_packages", new HashSet<>());
+        return customBlocked.contains(pkg);
+    }
+
+    public void addBlockedPackage(String pkg) {
+        Set<String> packages = new HashSet<>(prefs.getStringSet("blocked_packages", new HashSet<>()));
+        packages.add(pkg);
+        prefs.edit().putStringSet("blocked_packages", packages).apply();
+    }
+
+    public void removeBlockedPackage(String pkg) {
+        Set<String> packages = new HashSet<>(prefs.getStringSet("blocked_packages", new HashSet<>()));
+        packages.remove(pkg);
+        prefs.edit().putStringSet("blocked_packages", packages).apply();
+    }
+
     // ---- TRACKED APPS (per menu selezione) ----
     
     public Set<String> getTrackedIds() {
         Set<String> tracked = prefs.getStringSet("tracked_ids", null);
         if (tracked == null) {
-            // Default di partenza: solo le più letali.
+            // Default di partenza: le più comuni
             tracked = new HashSet<>();
             tracked.add("ig");
             tracked.add("tt");
             tracked.add("yt");
+            tracked.add("x");
         }
         return new HashSet<>(tracked);
     }
@@ -106,19 +89,14 @@ public class PrefsManager {
 
     // ---- UNLOCK TIMERS ----
 
-    public long getUnlockExpiry(String pkg) {
-        return prefs.getLong("unlock_" + pkg, 0);
-    }
-
     public void setUnlockExpiry(String pkg, long expiryTimestamp) {
         prefs.edit().putLong("unlock_" + pkg, expiryTimestamp).apply();
     }
 
     public boolean isUnlocked(String pkg) {
         if (pkg == null) return false;
-        long expiry = getUnlockExpiry(pkg);
-        boolean unlocked = System.currentTimeMillis() < expiry;
-        return unlocked;
+        long expiry = prefs.getLong("unlock_" + pkg, 0);
+        return System.currentTimeMillis() < expiry;
     }
 
     public void clearAllUnlocks() {
@@ -128,11 +106,11 @@ public class PrefsManager {
                 editor.remove(key);
             }
         }
-        editor.commit();
+        editor.apply();
     }
 
     public long getRemainingSeconds(String pkg) {
-        long expiry = getUnlockExpiry(pkg);
+        long expiry = prefs.getLong("unlock_" + pkg, 0);
         long diff = expiry - System.currentTimeMillis();
         return diff > 0 ? diff / 1000 : 0;
     }
@@ -155,14 +133,6 @@ public class PrefsManager {
         prefs.edit().putString("quiz_diff", diff).apply();
     }
 
-    public int getGoals() {
-        return prefs.getInt("quiz_goals", 3);
-    }
-
-    public void setGoals(int goals) {
-        prefs.edit().putInt("quiz_goals", goals).apply();
-    }
-
     public int getDurationSeconds() {
         return prefs.getInt("quiz_duration", 600);
     }
@@ -183,27 +153,18 @@ public class PrefsManager {
 
     // ---- COOLDOWN ----
 
-    public long getCooldownEnd() {
-        return prefs.getLong("cooldown_end", 0);
-    }
-
     public void setCooldownEnd(long timestamp) {
         prefs.edit().putLong("cooldown_end", timestamp).apply();
     }
 
     public boolean isInCooldown() {
-        return System.currentTimeMillis() < getCooldownEnd();
-    }
-
-    public long getCooldownRemainingSeconds() {
-        long diff = getCooldownEnd() - System.currentTimeMillis();
-        return diff > 0 ? diff / 1000 : 0;
+        return System.currentTimeMillis() < prefs.getLong("cooldown_end", 0);
     }
 
     // ---- STATS DASHBOARD ----
     
     public int getUnlocksToday() {
-        String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+        String today = getTodayString();
         String savedDate = prefs.getString("unlocks_date", "");
         if (!today.equals(savedDate)) {
              prefs.edit().putInt("unlocks_count", 0).putString("unlocks_date", today).apply();
@@ -217,18 +178,8 @@ public class PrefsManager {
         prefs.edit().putInt("unlocks_count", current + 1).apply();
     }
 
-    // ---- FIRST LAUNCH & RESISTED ----
-    
-    public boolean isFirstLaunch() {
-        return prefs.getBoolean("is_first_launch", true);
-    }
-    
-    public void setFirstLaunchDone() {
-        prefs.edit().putBoolean("is_first_launch", false).apply();
-    }
-    
     public int getResistedToday() {
-        String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+        String today = getTodayString();
         String savedDate = prefs.getString("resisted_date", "");
         if (!today.equals(savedDate)) {
              prefs.edit().putInt("resisted_count", 0).putString("resisted_date", today).apply();
@@ -240,5 +191,31 @@ public class PrefsManager {
     public void incrementResistedToday() {
         int current = getResistedToday();
         prefs.edit().putInt("resisted_count", current + 1).apply();
+    }
+
+    // ---- POE TRACKING (MESSAGGIO GIORNALIERO) ----
+    
+    public boolean hasShownPoeToday() {
+        String today = getTodayString();
+        return today.equals(prefs.getString("last_poe_date", ""));
+    }
+
+    public void markPoeAsShownToday() {
+        String today = getTodayString();
+        prefs.edit().putString("last_poe_date", today).apply();
+    }
+
+    // ---- FIRST LAUNCH ----
+    
+    public boolean isFirstLaunch() {
+        return prefs.getBoolean("is_first_launch", true);
+    }
+    
+    public void setFirstLaunchDone() {
+        prefs.edit().putBoolean("is_first_launch", false).apply();
+    }
+
+    private String getTodayString() {
+        return new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
     }
 }

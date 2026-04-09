@@ -40,6 +40,13 @@ public class QuizActivity extends AppCompatActivity {
     private View interstitialCard, quizCard;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
+    
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIntent();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

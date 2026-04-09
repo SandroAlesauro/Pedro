@@ -31,4 +31,6 @@
     <color name="nav_bg">#000000</color>
     <color name="nav_inactive">#888888</color>
     <color name="divider">#FFFFFF</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

@@ -19,7 +19,7 @@
     <string name="connected">CONNECTED</string>
     <string name="disconnected">DISABLED</string>
     <string name="support_project">SUPPORT THE PROJECT</string>
-    <string name="donate_desc">MindGate is a tool of deprivation for your own good. If it helps you, buy me a coffee.</string>
+    <string name="donate_desc">Pedro is a tool of deprivation for your own good. If it helps you, buy me a coffee.</string>
     <string name="made_with_love">MADE WITH LOVE IN ITALY 🇮🇹</string>
     <string name="active">ACTIVE</string>
     <string name="minutes_suffix">MIN</string>
@@ -35,8 +35,8 @@
     </string-array>
 
     <string name="access_in">ACCESS IN: %1$d</string>
-    <string name="usage_stats_title">REALITY CHECK: NO DATA</string>
-    <string name="usage_stats_desc">Without access to usage data, QuizLock can\'t show you how much time you\'re losing. Enable access now.</string>
+    <string name="usage_stats_title">USAGE DATA</string>
+    <string name="usage_stats_desc">Pedro needs access to usage data to show you how much time you spend on social media.</string>
     <string name="grant_access">ENABLE ACCESS</string>
 
     <string name="resisted">RESISTED</string>
@@ -53,4 +53,20 @@
     <string name="quiz_error">ERROR</string>
     <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
     <string name="quiz_block_kept">LOCK REMAINING</string>
+
+    <!-- Dash Descriptions -->
+    <string name="desc_unlocks">Number of times you gave in and opened a social app today.</string>
+    <string name="desc_resisted">Number of times you chose not to open the app after the Reality Check.</string>
+    <string name="desc_usage">Total time spent TODAY on the apps you chose to block.</string>
+    <string name="desc_usage_annual">Total time lost on social media (only blocked apps) since you installed Pedro.</string>
+
+    <!-- Permissions -->
+    <string name="perm_acc_title">Grant Accessibility</string>
+    <string name="perm_acc_desc">Enable Pedro\'s Accessibility Service to allow blocking of monitored apps.</string>
+    <string name="perm_overlay_title">App Overlay</string>
+    <string name="perm_overlay_desc">Pedro needs overlay permission to show the quiz over other apps.</string>
+    <string name="btn_settings">SETTINGS</string>
+    <string name="btn_ok">OK</string>
+    <string name="feedback_title">FEEDBACK &amp; IDEAS</string>
+    <string name="feedback_desc">Have ideas to improve Pedro or want to say thanks? Hit me up on Instagram!</string>
 </resources>

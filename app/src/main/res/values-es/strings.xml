@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">INICIO</string>
+    <string name="nav_settings">OPCIONES</string>
+    <string name="reality_check">REALITY CHECK</string>
+    <string name="unlocks">DESBLOQUEOS</string>
+    <string name="social_day">SOCIAL/DÍA</string>
+    <string name="lost_year">PERDIDO/AÑO</string>
+    <string name="blocked_apps">APSS BLOQUEADAS</string>
+    <string name="tap_to_remove">TOCA PARA QUITAR (10 P.)</string>
+    <string name="localization">LOCALIZACIÓN</string>
+    <string name="quiz_language">IDIOMA QUIZ</string>
+    <string name="unlock_protocol">PROTOCOLO DE DESBLOQUEO</string>
+    <string name="topic">TEMA</string>
+    <string name="difficulty">NIVEL DIFICULTAD</string>
+    <string name="window_duration">DURACIÓN VENTANA</string>
+    <string name="system_accessory">ACCESORIO SISTEMA</string>
+    <string name="accessibility_service">ACCESIBILIDAD</string>
+    <string name="connected">CONECTADO</string>
+    <string name="disconnected">DESACTIVADO</string>
+    <string name="support_project">APOYA EL PROYECTO</string>
+    <string name="donate_desc">Pedro es una herramienta de privación por tu propio bien. Si te sirve, invítame un café.</string>
+    <string name="made_with_love">HECHO CON AMOR EN ITALIA 🇮🇹</string>
+    <string name="active">ACTIVO</string>
+    <string name="minutes_suffix">MIN</string>
+    <string name="questions_suffix">PREGUNTAS</string>
+    <string name="days_suffix">DÍAS</string>
+
+    <string-array name="poe_messages">
+        <item>TU TIEMPO ES PRECIOSO. ÚSALO PARA CONSTRUIR TUS SUEÑOS, NO PARA HACER SCROLL EN LOS DE OTROS.</item>
+        <item>DESCONÉCTATE UN MOMENTO. EL MUNDO REAL TIENE GRÁFICOS MUCHO MEJORES.</item>
+        <item>TÚ ELIGES QUÉ HACER CON TU TIEMPO, NO DEJES QUE UN ALGORITMO LO DECIDA.</item>
+        <item>RESPIRA. NO TE PIERDES NADA IMPORTANTE EN LAS REDES. TODO LO QUE IMPORTA ESTÁ AQUÍ Y AHORA.</item>
+        <item>CADA MINUTO QUE NO ESTÁS AQUÍ ES UNA OPORTUNIDAD PARA APRENDER, CREAR O SIMPLEMENTE DESCANSAR.</item>
+    </string-array>
+
+    <string name="access_in">ACCESO EN: %1$d</string>
+    <string name="usage_stats_title">DATOS DE USO</string>
+    <string name="usage_stats_desc">Pedro necesita acceder a los datos de uso para mostrarte cuánto tiempo pasas en las redes sociales.</string>
+    <string name="grant_access">HABILITAR ACCESO</string>
+
+    <string name="resisted">RESISTIDO</string>
+    <string name="interstitial_title">¿Estás seguro?</string>
+    <string name="interstitial_desc">Estás a punto de abrir una red social. ¿Estás aquí con un propósito o para huir del aburrimiento? \nElige ahora si volver a vivir o perder tu tiempo desafiando el bloqueo.</string>
+    <string name="btn_go_home">CERRAR APP (VOLVER A VIVIR)</string>
+    <string name="btn_do_quiz">HACER EL QUIZ (DESBLOQUEAR)</string>
+
+    <string name="onboarding_title">ATENCIÓN</string>
+    <string name="onboarding_desc">Pedro está hecho para ayudarte a combatir la adicción digital. Instalarlo solo por tener una app en el móvil no servirá de nada sin tu compromiso real. \n\nSé honesto contigo mismo. Si no vas en serio, desinstálala ahora.</string>
+    <string name="choose_apps_btn">GESTIONAR APPS</string>
+    <string name="choose_apps_title">Seleccionar Apps</string>
+    <string name="quiz_removing">RETIRANDO: </string>
+    <string name="quiz_error">ERROR</string>
+    <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
+    <string name="quiz_block_kept">BLOQUEO MANTENIDO</string>
+
+    <!-- Dash Descriptions -->
+    <string name="desc_unlocks">Número de veces que cediste y abriste una red social hoy.</string>
+    <string name="desc_resisted">Número de veces que elegiste no abrir la app tras el Reality Check.</string>
+    <string name="desc_usage">Tiempo total empleado HOY en las apps que decidiste bloquear.</string>
+    <string name="desc_usage_annual">Tiempo total perdido en redes sociales (solo apps bloqueadas) desde que instalaste Pedro.</string>
+
+    <!-- Permissions -->
+    <string name="perm_acc_title">Conceder Accesibilidad</string>
+    <string name="perm_acc_desc">Habilita el Servicio de Accesibilidad de Pedro para permitir el bloqueo de las apps monitorizadas.</string>
+    <string name="perm_overlay_title">Superposición</string>
+    <string name="perm_overlay_desc">Pedro necesita el permiso de superposición para mostrar el quiz sobre otras apps.</string>
+    <string name="btn_settings">AJUSTES</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_save">GUARDAR</string>
+    <string name="feedback_title">IDEAS Y FEEDBACK</string>
+    <string name="feedback_desc">¿Tienes ideas para mejorar Pedro o quieres darme las gracias? ¡Escríbeme en Instagram!</string>
+</resources>

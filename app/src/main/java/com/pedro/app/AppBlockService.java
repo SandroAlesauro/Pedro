@@ -24,12 +24,16 @@ public class AppBlockService extends AccessibilityService {
         if (pkg == null || pkg.isEmpty()) return;
 
         int eventType = event.getEventType();
+        
+        // Accetta SOLO eventi di cambio finestra (quando un'app viene messa in primo piano)
+        // Ignora qualsiasi evento in background come notifiche, toast, ecc.
+        if (eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            return;
+        }
 
-        // Throttling per evitare loop infiniti o rallentamenti
+        // Throttling per evitare loop infiniti
         long now = System.currentTimeMillis();
-        if (pkg.equals(lastPackage) && 
-            eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED &&
-            (now - lastCheckTime < 500)) {
+        if (pkg.equals(lastPackage) && (now - lastCheckTime < 500)) {
             return;
         }
         

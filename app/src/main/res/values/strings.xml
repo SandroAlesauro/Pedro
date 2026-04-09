@@ -3,8 +3,8 @@
     <string name="app_name">Pedro</string>
     <string name="title_activity_main">Pedro</string>
     <string name="accessibility_service_description">Pedro monitora l\'apertura delle app per aiutarti a mantenere il focus.</string>
-    <string name="package_name">com.quizlock.app</string>
-    <string name="custom_url_scheme">com.quizlock.app</string>
+    <string name="package_name">com.pedro.app</string>
+    <string name="custom_url_scheme">com.pedro.app</string>
 
     <!-- UI Strings -->
     <string name="nav_home">HOME</string>
@@ -26,7 +26,7 @@
     <string name="connected">COLLEGATO</string>
     <string name="disconnected">DISATTIVATO</string>
     <string name="support_project">SUPPORTA IL PROGETTO</string>
-    <string name="donate_desc">QuizLock è uno strumento di privazione per il tuo bene. Se ti serve, offrimi un caffè.</string>
+    <string name="donate_desc">Pedro è uno strumento di privazione per il tuo bene. Se ti serve, offrimi un caffè.</string>
     <string name="made_with_love">MADE WITH LOVE IN ITALY 🇮🇹</string>
     <string name="active">ATTIVO</string>
     <string name="minutes_suffix">MIN</string>
@@ -36,14 +36,14 @@
     <string-array name="poe_messages">
         <item>IL TUO TEMPO È PREZIOSO. USALO PER COSTRUIRE I TUOI SOGNI, NON PER SCROLLARE QUELLI DEGLI ALTRI.</item>
         <item>SCOLLEGATI UN ATTIMO. IL MONDO VERO HA UNA GRAFICA MOLTO PIÙ BELLA.</item>
-        <item>SCEGLI TU COSA FARE DEL TUO TEMPO, NON LASCIARE CHE LO DECIDA UN ALGORITMO.</item>
+        <item>SCEGLI TU COSA FARE DEL TUO TEMPO, NON LASCIARE QUELLI CHE LO DECIDA UN ALGORITMO.</item>
         <item>RESPIRA. NON TI PERDI NULLA DI IMPORTANTE SUI SOCIAL. TUTTO CIÒ CHE CONTA È QUI E ORA.</item>
         <item>OGNI MINUTO NON TRASCORSO QUI È UN\'OPPORTUNITÀ PER IMPARARE, CREARE O SEMPLICEMENTE RIPOSARE.</item>
     </string-array>
 
     <string name="access_in">ACCESSO IN: %1$d</string>
-    <string name="usage_stats_title">REALITY CHECK: DATI ASSENTI</string>
-    <string name="usage_stats_desc">Senza accesso ai dati di utilizzo, MindGate non può mostrare quanto tempo stai perdendo. Abilita la visualizzazione ora.</string>
+    <string name="usage_stats_title">DATI DI UTILIZZO</string>
+    <string name="usage_stats_desc">Pedro ha bisogno di accedere ai dati di utilizzo per mostrarti quanto tempo trascorri sui social.</string>
     <string name="grant_access">ABILITA ACCESSO</string>
     
     <string name="resisted">RINUNCE</string>
@@ -60,4 +60,22 @@
     <string name="quiz_error">ERRORE</string>
     <string name="quiz_cooldown">COOLDOWN 2 MIN</string>
     <string name="quiz_block_kept">BLOCCO MANTENUTO</string>
+
+    <!-- Dash Descriptions -->
+    <string name="desc_unlocks">Numero di volte che hai ceduto e aperto un social oggi.</string>
+    <string name="desc_resisted">Numero di volte che hai scelto di non aprire l\'app dopo il Reality Check.</string>
+    <string name="desc_usage">Tempo totale trascorso OGGI sulle app che hai attualmente deciso di bloccare.</string>
+    <string name="desc_usage_annual">Tempo totale perso sui social (tra quelli che stai bloccando) a partire dall\'installazione di Pedro.</string>
+
+    <!-- Permissions -->
+    <string name="perm_acc_title">Concedi Accessibilità</string>
+    <string name="perm_acc_desc">Abilita il Servizio di Accessibilità di Pedro per permettere il blocco delle app monitorate.</string>
+    <string name="perm_overlay_title">Sovrapposizione App</string>
+    <string name="perm_overlay_desc">Pedro ha bisogno del permesso di sovrapposizione per mostrare il quiz sopra le altre app.</string>
+    <string name="btn_settings">IMPOSTAZIONI</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_save">SALVA</string>
+
+    <string name="feedback_title">FEEDBACK E CONSIGLI</string>
+    <string name="feedback_desc">Hai idee per migliorare Pedro o vuoi dirmi che ti piace? Scrivimi su Instagram!</string>
 </resources>

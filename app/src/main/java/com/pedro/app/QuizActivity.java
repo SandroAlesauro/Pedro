@@ -146,6 +146,15 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             interstitialCard.setVisibility(View.VISIBLE);
             quizCard.setVisibility(View.GONE);
+            // Mostra citazione motivazionale
+            TextView quoteView = findViewById(R.id.interstitial_quote);
+            if (quoteView != null) {
+                String[] quotes = getResources().getStringArray(R.array.motivational_quotes);
+                if (quotes.length > 0) {
+                    quoteView.setText(quotes[new java.util.Random().nextInt(quotes.length)]);
+                    quoteView.setVisibility(View.VISIBLE);
+                }
+            }
         }
     }
 
@@ -180,6 +189,7 @@ public class QuizActivity extends AppCompatActivity {
         boolean correct = (selected == q.answer);
 
         if (correct) {
+            pm.recordQuizResult(true);
             optViews[selected].setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
             optViews[selected].setTextColor(Color.BLACK);
             handler.postDelayed(() -> {
@@ -197,6 +207,7 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }, 600);
         } else {
+            pm.recordQuizResult(false);
             optViews[selected].setTextColor(Color.GRAY);
             if (!isSettingsUnlock) pm.setCooldownEnd(System.currentTimeMillis() + 120000);
             handler.postDelayed(this::showCooldownAndClose, 800);

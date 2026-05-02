@@ -215,7 +215,118 @@ public class PrefsManager {
         prefs.edit().putBoolean("is_first_launch", false).apply();
     }
 
+    // ---- DAILY LIMIT ----
+
+    public int getDailyLimitMinutes() {
+        return prefs.getInt("daily_limit_minutes", 0);
+    }
+
+    public void setDailyLimitMinutes(int minutes) {
+        prefs.edit().putInt("daily_limit_minutes", minutes).apply();
+    }
+
+    // ---- SCHEDULED BLOCK ----
+
+    public boolean isScheduledBlockEnabled() {
+        return prefs.getBoolean("scheduled_block_enabled", false);
+    }
+
+    public void setScheduledBlockEnabled(boolean enabled) {
+        prefs.edit().putBoolean("scheduled_block_enabled", enabled).apply();
+    }
+
+    public int getBlockStartHour() {
+        return prefs.getInt("block_start_hour", 0);
+    }
+
+    public void setBlockStartHour(int hour) {
+        prefs.edit().putInt("block_start_hour", hour).apply();
+    }
+
+    public int getBlockEndHour() {
+        return prefs.getInt("block_end_hour", 7);
+    }
+
+    public void setBlockEndHour(int hour) {
+        prefs.edit().putInt("block_end_hour", hour).apply();
+    }
+
+    // ---- NOTIFICATIONS ----
+
+    public boolean isNotificationEnabled() {
+        return prefs.getBoolean("notification_enabled", false);
+    }
+
+    public void setNotificationEnabled(boolean enabled) {
+        prefs.edit().putBoolean("notification_enabled", enabled).apply();
+    }
+
     private String getTodayString() {
         return new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+    }
+
+    // ---- FOCUS MODE (POMODORO) ----
+
+    public long getFocusModeEnd() {
+        return prefs.getLong("focus_mode_end", 0);
+    }
+
+    public void setFocusModeEnd(long timestamp) {
+        prefs.edit().putLong("focus_mode_end", timestamp).apply();
+    }
+
+    public boolean isFocusModeActive() {
+        return System.currentTimeMillis() < getFocusModeEnd();
+    }
+
+    public int getFocusDurationMinutes() {
+        return prefs.getInt("focus_duration", 25);
+    }
+
+    public void setFocusDurationMinutes(int minutes) {
+        prefs.edit().putInt("focus_duration", minutes).apply();
+    }
+
+    // ---- PER-APP LIMITS ----
+
+    public int getAppLimitMinutes(String appId) {
+        return prefs.getInt("app_limit_" + appId, 0);
+    }
+
+    public void setAppLimitMinutes(String appId, int minutes) {
+        prefs.edit().putInt("app_limit_" + appId, minutes).apply();
+    }
+
+    // ---- PROGRESSIVE DIFFICULTY ----
+
+    public int getQuizCorrectCount() {
+        return prefs.getInt("quiz_correct_count", 0);
+    }
+
+    public int getQuizTotalCount() {
+        return prefs.getInt("quiz_total_count", 0);
+    }
+
+    public void recordQuizResult(boolean correct) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("quiz_total_count", getQuizTotalCount() + 1);
+        if (correct) editor.putInt("quiz_correct_count", getQuizCorrectCount() + 1);
+        editor.apply();
+        autoAdjustDifficulty();
+    }
+
+    private void autoAdjustDifficulty() {
+        int total = getQuizTotalCount();
+        if (total < 10) return; // Attendi almeno 10 quiz per regolare
+        int correct = getQuizCorrectCount();
+        float rate = (float) correct / total;
+        if (rate >= 0.85f && getDifficulty().equals("medio")) {
+            setDifficulty("difficile");
+            // Reset contatori per nuovo ciclo
+            prefs.edit().putInt("quiz_correct_count", 0).putInt("quiz_total_count", 0).apply();
+        } else if (rate < 0.40f && getDifficulty().equals("difficile")) {
+            setDifficulty("medio");
+            prefs.edit().putInt("quiz_correct_count", 0).putInt("quiz_total_count", 0).apply();
+        }
     }
 }

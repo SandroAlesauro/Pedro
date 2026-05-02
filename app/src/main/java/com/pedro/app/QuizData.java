@@ -59,8 +59,8 @@ public class QuizData {
         itLogicMedio.add(new Question("Cosa puoi vedere una volta in un minuto, due in un momento, ma mai in cent'anni?", new String[]{"La lettera M", "Il tempo", "L'ombra", "Il riflesso"}, 0));
         itLogicMedio.add(new Question("Cosa ha un cuore che non batte?", new String[]{"Carciofo", "Pietra", "Statua", "Albero"}, 0));
         itLogicMedio.add(new Question("Più la lavi, più diventa sporca. Cos'è?", new String[]{"Acqua", "Saponetta", "Spugna", "Asciugamano"}, 0));
-        itLogicMedio.add(new Question("Se dici il mio nome, mi rompi. Chi sono?", new String[]{"Vetro", "Silenzio", "Segreto", "Cuore"}, 1));
-        itLogicMedio.add(new Question("In avanti sono pesante, all'indietro no. Cosa sono?", new String[]{"Ton", "Peso", "Niente", "Masso"}, 0));
+        itLogicMedio.add(new Question("Ho le mani ma non posso applaudire. Cosa sono?", new String[]{"Orologio", "Tavolo", "Statua", "Guanto"}, 0));
+        itLogicMedio.add(new Question("Sono leggera come una piuma, ma nessuno riesce a tenermi a lungo. Cosa sono?", new String[]{"Respiro", "Piuma", "Bolla", "Aria"}, 0));
         itLogic.put("medio", itLogicMedio);
 
         List<Question> itLogicDiff = new ArrayList<>();
@@ -77,13 +77,13 @@ public class QuizData {
         itLogicDiff.add(new Question("Un uomo esce sotto la pioggia senza ombrello e non si bagna un capello. Perché?", new String[]{"È calvo", "È al chiuso", "Indossa un cappello", "Non piove"}, 0));
         itLogicDiff.add(new Question("Cosa appartiene a te ma gli altri lo usano più di te?", new String[]{"Nome", "Denaro", "Cellulare", "Casa"}, 0));
         itLogicDiff.add(new Question("Cosa ha città ma non case, montagne ma non alberi, e acqua ma non pesci?", new String[]{"Globo", "Atlante", "Mappa", "Cartina"}, 2));
-        itLogicDiff.add(new Question("Quale parola di 7 lettere diventa più lunga se rimuovi una lettera?", new String[]{"Settane", "Sette", "Nessuna", "Lungo"}, 1));
+        itLogicDiff.add(new Question("Non puoi toccarmi ma posso ferire. Non mi vedi ma sono sempre con te. Cosa sono?", new String[]{"Pensiero", "Vento", "Tempo", "Ombra"}, 0));
         itLogicDiff.add(new Question("Cosa puoi tenere nella mano destra ma non nella sinistra?", new String[]{"Gomito sinistro", "Penna", "Mela", "Niente"}, 0));
         itLogicDiff.add(new Question("Cosa sale ma non scende mai?", new String[]{"Età", "Prezzo", "Palloncino", "Fumo"}, 0));
         itLogicDiff.add(new Question("Più ce n'è, meno vedi. Cosa?", new String[]{"Nebbia", "Buio", "Luce", "Fumo"}, 1));
         itLogicDiff.add(new Question("Ha un collo ma non la testa. Cos'è?", new String[]{"Fiasca", "Maglia", "Chitarra", "Bottiglia"}, 3));
         itLogicDiff.add(new Question("Cosa va in giro per il mondo restando in un angolo?", new String[]{"Francobollo", "Sole", "Vento", "Luna"}, 0));
-        itLogicDiff.add(new Question("Se dici il mio nome, non ci sono più. Chi sono?", new String[]{"Silenzio", "Ombra", "Sogno", "Segreto"}, 0));
+        itLogicDiff.add(new Question("Porto carichi pesanti ma non ho muscoli. Cosa sono?", new String[]{"Treno", "Nave", "Ponte", "Camion"}, 2));
         itLogicDiff.add(new Question("Un orologio segna le 3:15. Quanto è l'angolo tra le lancette?", new String[]{"0°", "7.5°", "15°", "5°"}, 1));
         itLogicDiff.add(new Question("Ci sono 3 mele e ne prendi 2. Quante mele hai?", new String[]{"1", "2", "3", "0"}, 1));
         itLogicDiff.add(new Question("Quanti mesi hanno 28 giorni?", new String[]{"1", "12", "6", "Nessuno"}, 1));
@@ -249,8 +249,8 @@ public class QuizData {
         enMathMedio.add(new Question("50% of 200?", new String[]{"50", "100", "150", "20"}, 1));
         enMathMedio.add(new Question("Right angle degrees?", new String[]{"45", "180", "90", "360"}, 2));
         enMathMedio.add(new Question("6 x 7?", new String[]{"42", "48", "36", "44"}, 0));
-        enMathMedio.add(new Question("Radice di 400?", new String[]{"10", "20", "30", "40"}, 1));
-        enMathMedio.add(new Question("10% di 500?", new String[]{"10", "50", "100", "5"}, 1));
+        enMathMedio.add(new Question("√(400) = ?", new String[]{"10", "20", "30", "40"}, 1));
+        enMathMedio.add(new Question("10% of 500?", new String[]{"10", "50", "100", "5"}, 1));
         enMath.put("medio", enMathMedio);
 
         List<Question> enMathDiff = new ArrayList<>();
@@ -418,7 +418,7 @@ public class QuizData {
         esLogicDiff.add(new Question("Si un tren va al sur, ¿hacia dónde va el humo?", new String[]{"Sur", "Norte", "Ningún lado", "Arriba"}, 2));
         esLogicDiff.add(new Question("¿Qué tiene ciudades sin casas y agua sin peces?", new String[]{"Globo", "Atlas", "Mapa", "Planeta"}, 2));
         esLogicDiff.add(new Question("Entre más hay, menos ves. ¿Qué es?", new String[]{"Niebla", "Oscuridad", "Luz", "Humo"}, 1));
-        esLogicDiff.add(new Question("Si me rompes, sigo funcionando. ¿Qué soy?", new String[]{"Secreto", "Silencio", "Noticia", "Corazón"}, 3));
+        esLogicDiff.add(new Question("Si me rompes, sigo funcionando. ¿Qué soy?", new String[]{"Secreto", "Silencio", "Récord", "Corazón"}, 2));
         esLogicDiff.add(new Question("Tienes 3 manzanas y tomas 2. ¿Cuántas tienes?", new String[]{"1", "2", "3", "0"}, 1));
         esLogic.put("difficile", esLogicDiff);
 
@@ -459,7 +459,7 @@ public class QuizData {
         if (topicMap == null) topicMap = langMap.get("logic");
         List<Question> qs = topicMap.get(diff);
         if (qs == null) qs = topicMap.get("medio");
-        return qs;
+        return qs != null ? new ArrayList<>(qs) : new ArrayList<>();
     }
 
     private static List<Question> generateDynamicMath(String diff, int count) {
@@ -557,9 +557,17 @@ public class QuizData {
             qs.add(new Question("Wie viele Seiten hat ein Sechseck?", new String[]{"5", "6", "7", "8"}, 1));
             qs.add(new Question("Was ist der rote Planet?", new String[]{"Mars", "Venus", "Jupiter", "Saturn"}, 0));
             qs.add(new Question("Größtes Tier der Welt?", new String[]{"Elefant", "Blauwal", "Giraffe", "Hai"}, 1));
-
-
-
+            qs.add(new Question("Hauptstadt von Spanien?", new String[]{"Barcelona", "Madrid", "Sevilla", "Valencia"}, 1));
+            qs.add(new Question("Wie viele Planeten hat unser Sonnensystem?", new String[]{"7", "8", "9", "10"}, 1));
+            qs.add(new Question("Woraus besteht Wasser?", new String[]{"H2O", "CO2", "O2", "NaCl"}, 0));
+            qs.add(new Question("Hauptstadt von Italien?", new String[]{"Mailand", "Venedig", "Rom", "Neapel"}, 2));
+            qs.add(new Question("Wie viele Zähne hat ein Erwachsener?", new String[]{"28", "30", "32", "34"}, 2));
+            qs.add(new Question("Was kocht bei 100 Grad?", new String[]{"Milch", "Öl", "Wasser", "Wein"}, 2));
+            qs.add(new Question("Wie viele Zwerge hat Schneewittchen?", new String[]{"5", "6", "7", "8"}, 2));
+            qs.add(new Question("Symbol für Gold?", new String[]{"Ag", "Au", "Or", "O"}, 1));
+            qs.add(new Question("Wer malte die Sixtinische Kapelle?", new String[]{"Leonardo", "Michelangelo", "Raffael", "Donatello"}, 1));
+            qs.add(new Question("Auf welchem Kontinent liegt Ägypten?", new String[]{"Afrika", "Asien", "Europa", "Südamerika"}, 0));
+            qs.add(new Question("Wie viele Tage hat ein Schaltjahr?", new String[]{"365", "366", "364", "360"}, 1));
         } else if ("es".equals(lang)) {
             qs.add(new Question("¿Capital de Francia?", new String[]{"Londres", "Berlín", "París", "Madrid"}, 2));
             qs.add(new Question("¿Cuántos lados tiene un hexágono?", new String[]{"5", "6", "7", "8"}, 1));
@@ -618,7 +626,7 @@ public class QuizData {
     public static String packageToId(String pkg) {
         for (String[] app : APPS) {
             // Un package reale dovrebbe avere un nome definito, evito di matchare generici come "com"
-            if (pkg.contains(app[3])) return app[0]; 
+            if (pkg.equals(app[3]) || pkg.startsWith(app[3] + ".")) return app[0]; 
         }
         return null;
     }

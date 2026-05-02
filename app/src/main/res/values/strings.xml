@@ -78,4 +78,69 @@
 
     <string name="feedback_title">FEEDBACK E CONSIGLI</string>
     <string name="feedback_desc">Hai idee per migliorare Pedro o vuoi dirmi che ti piace? Scrivimi su Instagram!</string>
+
+    <!-- Weekly Chart -->
+    <string name="weekly_chart_title">ULTIMI 7 GIORNI</string>
+
+    <!-- Daily Limit -->
+    <string name="daily_limit_section">LIMITE GIORNALIERO</string>
+    <string name="daily_limit_label">LIMITE</string>
+    <string name="daily_limit_exceeded">⚠️ LIMITE GIORNALIERO SUPERATO</string>
+
+    <!-- Scheduled Block -->
+    <string name="scheduled_block_section">BLOCCO PROGRAMMATO</string>
+    <string name="schedule_active">ATTIVO</string>
+    <string name="schedule_start">INIZIO</string>
+    <string name="schedule_end">FINE</string>
+    <string name="scheduled_block_toast">⏰ BLOCCO PROGRAMMATO ATTIVO</string>
+    <string name="schedule_select_hour">Seleziona ora</string>
+
+    <!-- Notifications -->
+    <string name="notifications_section">NOTIFICHE</string>
+    <string name="evening_summary">RIEPILOGO SERALE (21:00)</string>
+    <string name="notif_title">Pedro — Riepilogo Giornaliero</string>
+    <string name="notif_body">Social: %1$s | Sblocchi: %2$d | Rinunce: %3$d</string>
+    <string name="notif_channel_name">Riepilogo Giornaliero</string>
+    <string name="notif_channel_desc">Notifica serale con il riepilogo dell\'utilizzo dei social</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+
+    <!-- Focus Mode -->
+    <string name="focus_mode_title">⏱ FOCUS MODE</string>
+    <string name="focus_start">BLOCCA TUTTO — %d MIN</string>
+    <string name="focus_stop">✕ INTERROMPI FOCUS</string>
+    <string name="focus_mode_active_toast">🔒 FOCUS MODE ATTIVO</string>
+    <string name="focus_duration_label">DURATA FOCUS</string>
+    <string name="focus_ended">✅ Sessione Focus completata!</string>
+
+    <!-- Per-app Limits -->
+    <string name="per_app_limit_title">LIMITI PER APP</string>
+    <string name="app_limit_exceeded_toast">⚠️ LIMITE APP RAGGIUNTO</string>
+
+    <!-- Insights -->
+    <string name="insight_less">📉 %d%% in meno rispetto alla settimana scorsa</string>
+    <string name="insight_more">📈 %d%% in più rispetto alla settimana scorsa</string>
+    <string name="insight_same">➡️ Stesso utilizzo della settimana scorsa</string>
+    <string name="insight_no_data">📊 Non abbastanza dati per un confronto</string>
+
+    <!-- Share -->
+    <string name="share_stats">📤 CONDIVIDI LE TUE STATS</string>
+    <string name="share_text">🐾 Pedro — Le mie stats di oggi:\n📱 Social: %1$s\n🔓 Sblocchi: %2$d\n💪 Rinunce: %3$d\n#Pedro #DigitalWellbeing</string>
+
+    <!-- Progressive Difficulty -->
+    <string name="difficulty_auto_up">🧠 Difficoltà aumentata automaticamente!</string>
+    <string name="difficulty_auto_down">Difficoltà ridotta — riprova!</string>
+
+    <string-array name="motivational_quotes">
+        <item>\"Il tempo è la valuta più preziosa. Una volta speso, non torna.\"</item>
+        <item>\"Non è quello che fai di tanto in tanto che conta, ma quello che fai ogni giorno.\"</item>
+        <item>\"La disciplina è il ponte tra gli obiettivi e il successo.\"</item>
+        <item>\"Il tuo futuro è creato da ciò che fai oggi, non domani.\"</item>
+        <item>\"La libertà è la capacità di dire no a ciò che non ti serve.\"</item>
+        <item>\"Ogni minuto che sprechi è un minuto che non puoi recuperare.\"</item>
+        <item>\"La vera forza non è non cadere, ma rialzarsi ogni volta.\"</item>
+        <item>\"Chi controlla il proprio tempo, controlla la propria vita.\"</item>
+        <item>\"Il cambiamento non avviene domani. Inizia adesso.\"</item>
+        <item>\"Non serve essere perfetti. Serve essere costanti.\"</item>
+    </string-array>
 </resources>

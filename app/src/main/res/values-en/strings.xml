@@ -69,4 +69,64 @@
     <string name="btn_ok">OK</string>
     <string name="feedback_title">FEEDBACK &amp; IDEAS</string>
     <string name="feedback_desc">Have ideas to improve Pedro or want to say thanks? Hit me up on Instagram!</string>
+
+    <!-- Weekly Chart -->
+    <string name="weekly_chart_title">LAST 7 DAYS</string>
+
+    <!-- Daily Limit -->
+    <string name="daily_limit_section">DAILY LIMIT</string>
+    <string name="daily_limit_label">LIMIT</string>
+    <string name="daily_limit_exceeded">⚠️ DAILY LIMIT EXCEEDED</string>
+
+    <!-- Scheduled Block -->
+    <string name="scheduled_block_section">SCHEDULED BLOCK</string>
+    <string name="schedule_active">ACTIVE</string>
+    <string name="schedule_start">START</string>
+    <string name="schedule_end">END</string>
+    <string name="scheduled_block_toast">⏰ SCHEDULED BLOCK ACTIVE</string>
+    <string name="schedule_select_hour">Select hour</string>
+
+    <!-- Notifications -->
+    <string name="notifications_section">NOTIFICATIONS</string>
+    <string name="evening_summary">EVENING SUMMARY (9 PM)</string>
+    <string name="notif_title">Pedro — Daily Summary</string>
+    <string name="notif_body">Social: %1$s | Unlocks: %2$d | Resisted: %3$d</string>
+    <string name="notif_channel_name">Daily Summary</string>
+    <string name="notif_channel_desc">Evening notification with social media usage summary</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+
+    <string name="focus_mode_title">⏱ FOCUS MODE</string>
+    <string name="focus_start">BLOCK ALL — %d MIN</string>
+    <string name="focus_stop">✕ STOP FOCUS</string>
+    <string name="focus_mode_active_toast">🔒 FOCUS MODE ACTIVE</string>
+    <string name="focus_duration_label">FOCUS DURATION</string>
+    <string name="focus_ended">✅ Focus session completed!</string>
+
+    <string name="per_app_limit_title">PER-APP LIMITS</string>
+    <string name="app_limit_exceeded_toast">⚠️ APP LIMIT REACHED</string>
+
+    <string name="insight_less">📉 %d%% less than last week</string>
+    <string name="insight_more">📈 %d%% more than last week</string>
+    <string name="insight_same">➡️ Same usage as last week</string>
+    <string name="insight_no_data">📊 Not enough data for comparison</string>
+
+    <string name="share_stats">📤 SHARE YOUR STATS</string>
+    <string name="share_text">🐾 Pedro — My stats today:\n📱 Social: %1$s\n🔓 Unlocks: %2$d\n💪 Resisted: %3$d\n#Pedro #DigitalWellbeing</string>
+
+    <string name="difficulty_auto_up">🧠 Difficulty increased automatically!</string>
+    <string name="difficulty_auto_down">Difficulty lowered — try again!</string>
+
+    <string-array name="motivational_quotes">
+        <item>\"Time is the most valuable currency. Once spent, it never returns.\"</item>
+        <item>\"It\'s not what you do occasionally that matters, but what you do every day.\"</item>
+        <item>\"Discipline is the bridge between goals and achievement.\"</item>
+        <item>\"Your future is created by what you do today, not tomorrow.\"</item>
+        <item>\"Freedom is the ability to say no to what doesn\'t serve you.\"</item>
+        <item>\"Every wasted minute is a minute you can\'t get back.\"</item>
+        <item>\"True strength isn\'t never falling — it\'s rising every time.\"</item>
+        <item>\"Control your time, control your life.\"</item>
+        <item>\"Change doesn\'t happen tomorrow. It starts now.\"</item>
+        <item>\"You don\'t need to be perfect. You need to be consistent.\"</item>
+    </string-array>
 </resources>
